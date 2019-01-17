@@ -1,64 +1,64 @@
-ï»¿//æŠ½å¥–äººå‘˜åå•
-var allPerson = "å¼ ä¸‰;æå››;é™ˆäº”;ç‹å…­;è”¡ä¸ƒ;èµ–å…«";
-//é¢†å¯¼äººå‘˜åå•
-var leaderArr = ["å¼ ä¸‰"];
-//æœªä¸­å¥–äººå‘˜åå•
+//©â?¤H?¦W?
+var allPerson = "123;321;123123;123231123123123123;123123;002";
+//??¤H?¦W?
+var leaderArr = ["?¤T"];
+//¥¼¤¤?¤H?¦W?
 var remainPerson = allPerson.toString().split(";");
-//ä¸­å¥–äººå‘˜åå•
+//¤¤?¤H?¦W?
 var luckyMan = [];
-var timer;//å®šæ—¶å™¨
-var times = 1;//æŠ½å¥–æ¬¡æ•°,å¦‚æœä¸æ˜¯ç¬¬ä¸€æ¬¡ï¼Œä¸åŠ ç²—æ˜¾ç¤ºé¢†å¯¼å§“å
+var timer;//©w?¾¹
+var times = 1;//©â?¦¸?,¦pªG¤£¬O²Ä¤@¦¸¡A¤£¥[²Ê?¥Ü??©m¦W
 $(function () {
     iconAnimation();
-    //å¼€å§‹æŠ½å¥–
+    //?©l©â?
     $("#btnStart").on("click", function () {
-        //åˆ¤æ–­æ˜¯å¼€å§‹è¿˜æ˜¯ç»“æŸ
-        if ($("#btnStart").text() === "å¼€å§‹") {
+        //§P?¬O?©l?¬O?§ô
+        if ($("#btnStart").text() === "?©l") {
             if (!$("#txtNum").val()) {
-                showDialog("è¯·è¾“å…¥ä¸­å¥–äººæ•°");
+                showDialog("??¤J¤¤?¤H?");
                 return false;
             }
             if ($("#txtNum").val() > 49) {
-                showDialog("ä¸€æ¬¡æœ€å¤šåªèƒ½è¾“å…¥49äºº");
+                showDialog("¤@¦¸³Ì¦h¥u¯à?¤J49¤H");
                 return false;
             }
             if ($("#txtNum").val() > remainPerson.length) {
-                showDialog("å½“å‰æŠ½å¥–äººæ•°å¤§äºå¥–æ± æ€»äººæ•°<br>å½“å‰æŠ½å¥–äººæ•°ï¼š<b>" + $("#txtNum").val() + "</b>äºº,å¥–æ± äººæ•°ï¼š<b>" + remainPerson.length + "</b>äºº");
+                showDialog("?«e©â?¤H?¤j¤_?¦À?¤H?<br>?«e©â?¤H?¡G<b>" + $("#txtNum").val() + "</b>¤H,?¦À¤H?¡G<b>" + remainPerson.length + "</b>¤H");
                 return false;
             }
             $("#result").fadeOut();
-            //æ˜¾ç¤ºåŠ¨ç”»æ¡†ï¼Œéšè—ä¸­å¥–æ¡†
+            //?¥Ü??®Ø¡A?ÂÃ¤¤?®Ø
             $("#luckyDrawing").show().next().addClass("hide");
             move();
-            $("#btnStart").text("åœæ­¢");
+            $("#btnStart").text("°±¤î");
             $("#bgLuckyDrawEnd").removeClass("bg");
         }
         else {
-            $("#btnStart").text("å¼€å§‹");//è®¾ç½®æŒ‰é’®æ–‡æœ¬ä¸ºå¼€å§‹
+            $("#btnStart").text("?©l");//?¸m«ö?¤å¥»??©l
             var luckyDrawNum = $("#txtNum").val();
-            startLuckDraw();//æŠ½å¥–å¼€å§‹
+            startLuckDraw();//©â??©l
 
             $("#luckyDrawing").fadeOut();
-            clearInterval(timer);//åœæ­¢è¾“å…¥æ¡†åŠ¨ç”»å±•ç¤º
-            $("#luckyDrawing").val(luckyMan[luckyMan.length - 1]);//è¾“å…¥æ¡†æ˜¾ç¤ºæœ€åä¸€ä¸ªä¸­å¥–åå­—
-            $("#result").fadeIn().find("div").removeClass().addClass("p" + luckyDrawNum);//éšè—è¾“å…¥æ¡†ï¼Œæ˜¾ç¤ºä¸­å¥–æ¡†
-            $("#bgLuckyDrawEnd").addClass("bg");//æ·»åŠ ä¸­å¥–èƒŒæ™¯å…‰è¾‰
-            $("#txtNum").attr("placeholder", "è¾“å…¥ä¸­å¥–äººæ•°(" + remainPerson.length + ")");
+            clearInterval(timer);//°±¤î?¤J®Ø??®i¥Ü
+            $("#luckyDrawing").val(luckyMan[luckyMan.length - 1]);//?¤J®Ø?¥Ü³Ì¦Z¤@?¤¤?¦W¦r
+            $("#result").fadeIn().find("div").removeClass().addClass("p" + luckyDrawNum);//?ÂÃ?¤J®Ø¡A?¥Ü¤¤?®Ø
+            $("#bgLuckyDrawEnd").addClass("bg");//²K¥[¤¤?­I´º¥ú?
+            $("#txtNum").attr("placeholder", "?¤J¤¤?¤H?(" + remainPerson.length + ")");
         }
     });
 
     $("#btnReset").on("click", function () {
-        //ç¡®è®¤é‡ç½®å¯¹è¯æ¡†
+        //ÚÌ?­«¸m??®Ø
         var confirmReset = false;
-        showConfirm("ç¡®è®¤é‡ç½®å—ï¼Ÿæ‰€æœ‰å·²ä¸­å¥–çš„äººä¼šé‡æ–°å›åˆ°æŠ½å¥–æ± ï¼", function () {
-            //ç†ç½®æœªä¸­å¥–äººå‘˜åå•
+        showConfirm("ÚÌ?­«¸m?¡H©Ò¦³¤w¤¤?ªº¤H?­«·s¦^¨ì©â?¦À¡I", function () {
+            //âÀ¸m¥¼¤¤?¤H?¦W?
             remainPerson = allPerson.toString().split(";");
-            //ä¸­å¥–äººæ•°æ¡†ç½®ç©º
-            $("#txtNum").val("").attr("placeholder", "è¯·è¾“å…¥ä¸­å¥–äººæ•°");
+            //¤¤?¤H?®Ø¸mªÅ
+            $("#txtNum").val("").attr("placeholder", "??¤J¤¤?¤H?");
             $("#showName").val("");
-            //éšè—ä¸­å¥–åå•,ç„¶åæ˜¾ç¤ºæŠ½å¥–æ¡†
+            //?ÂÃ¤¤?¦W?,µM¦Z?¥Ü©â?®Ø
             $("#result").fadeOut();//.prev().fadeIn()
-            $("#bgLuckyDrawEnd").removeClass("bg");//ç§»é™¤èƒŒæ™¯å…‰è¾‰
+            $("#bgLuckyDrawEnd").removeClass("bg");//²¾°£­I´º¥ú?
             times++;
             console.log(times);
 
@@ -66,15 +66,15 @@ $(function () {
     });
 });
 
-//æŠ½å¥–ä¸»ç¨‹åº
+//©â?¥Dµ{§Ç
 function startLuckDraw() {
-    //æŠ½å¥–äººæ•°
+    //©â?¤H?
     var luckyDrawNum = $("#txtNum").val();
     if (luckyDrawNum > remainPerson.length) {
-        alert("æŠ½å¥–äººæ•°å¤§äºå¥–æ± äººæ•°ï¼è¯·ä¿®æ”¹äººæ•°ã€‚æˆ–è€…ç‚¹é‡ç½®å¼€å§‹å°†æ–°ä¸€è½®æŠ½å¥–ï¼");
+        alert("©â?¤H?¤j¤_?¦À¤H?¡I?­×§ï¤H?¡C©ÎªÌ?­«¸m?©l?·s¤@?©â?¡I");
         return false;
     }
-    //éšæœºä¸­å¥–äºº
+    //?Éó¤¤?¤H
     var randomPerson = getRandomArrayElements(remainPerson, luckyDrawNum);
     var tempHtml = "";
     $.each(randomPerson, function (i, person) {
@@ -90,35 +90,35 @@ function startLuckDraw() {
         }
     });
     $("#result>div").html(tempHtml);
-    //å‰©ä½™äººæ•°å‰”é™¤å·²ä¸­å¥–åå•
+    //³Ñ§E¤H?­ç°£¤w¤¤?¦W?
     remainPerson = remainPerson.delete(randomPerson);
-    //ä¸­å¥–äººå‘˜
+    //¤¤?¤H?
     luckyMan = luckyMan.concat(randomPerson);
-    //è®¾ç½®æŠ½å¥–äººæ•°æ¡†æ•°å­—ä¸ºç©º
+    //?¸m©â?¤H?®Ø?¦r?ªÅ
     $("#txtNum").val("");
 }
 
-//å‚è€ƒè¿™ç¯‡æ–‡ç« ï¼šhttp://www.html-js.com/article/JS-rookie-rookie-learned-to-fly-in-a-moving-frame-beating-figures
-//è·³åŠ¨çš„æ•°å­—
+//?¦Ò?½g¤å³¹¡Ghttp://www.html-js.com/article/JS-rookie-rookie-learned-to-fly-in-a-moving-frame-beating-figures
+//¸õ?ªº?¦r
 function move() {
-    var $showName = $("#showName"); //æ˜¾ç¤ºå†…å®¹çš„inputçš„ID
-    var interTime = 30;//è®¾ç½®é—´éš”æ—¶é—´
+    var $showName = $("#showName"); //?¥Ü?®eªºinputªºID
+    var interTime = 30;//?¸m?¹j??
     timer = setInterval(function () {
         var i = GetRandomNum(0, remainPerson.length);
-        $showName.val(remainPerson[i]);//è¾“å…¥æ¡†èµ‹å€¼
+        $showName.val(remainPerson[i]);//?¤J®Ø?­È
     }, interTime);
 }
 
-//é¡¶ä¸Šçš„å°å›¾æ ‡ï¼ŒéšæœºåŠ¨ç”»
+//?¤Wªº¤p??¡A?Éó??
 function iconAnimation() {
-    var interTime = 200;//è®¾ç½®é—´éš”æ—¶é—´
+    var interTime = 200;//?¸m?¹j??
     var $icon = $("#iconDiv>span");
     var arrAnimatoin = ["bounce", "flash", "pulse", "rubberBand", "shake", "swing", "wobble", "tada"];
     var timer2 = setInterval(function () {
         var i = GetRandomNum(0, $icon.length);
         var j = GetRandomNum(0, arrAnimatoin.length);
         //console.log("i:" + i + ",j:" + j);
-        $($icon[i]).removeClass().stop().addClass("animated " + arrAnimatoin[j]);//è¾“å…¥æ¡†èµ‹å€¼
+        $($icon[i]).removeClass().stop().addClass("animated " + arrAnimatoin[j]);//?¤J®Ø?­È
     }, interTime);
 
 }
