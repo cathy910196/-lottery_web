@@ -1,7 +1,7 @@
 //抽?人?名?
-var allPerson = "123;321;123123;123231123123123123;123123;002";
+var allPerson = "0911111111;0911111112;0911111113;1213;321;55555";
 //??人?名?
-var leaderArr = ["?三"];
+var leaderArr = ["321"];
 //未中?人?名?
 var remainPerson = allPerson.toString().split(";");
 //中?人?名?
